@@ -5,7 +5,7 @@ FULL ADDRESS   : bore.pub:41912
 PORT           : 41912
 HOST           : bore.pub
 -------------------------------------------------------
-Username       : admin
-Password       : WindowsRDP2026@
+Username       : phuongnam
+Password       : nguyen4455@
 Created        : 15:36:12 24/09/2026
 =======================================================
