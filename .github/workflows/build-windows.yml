@@ -1,0 +1,36 @@
+name: Build Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Find project
+        shell: bash
+        run: find Phuongnam -name "*.csproj" -print
+
+      - name: Restore
+        run: dotnet restore Phuongnam/Phuongnam/Phuongnam.csproj
+
+      - name: Build Windows x64
+        run: dotnet publish Phuongnam/Phuongnam/Phuongnam.csproj -c Release -r win-x64 --self-contained true -o publish
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Phuongnam-Windows-x64
+          path: publish/
